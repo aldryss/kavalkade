@@ -24,6 +24,7 @@
 *.bak
 build/
 dist/
+__pycache__
 
 # pyvenv
 bin/
@@ -40,4 +41,3 @@ share/
 *.rej
 *.egg-info
 
-__pycache__
