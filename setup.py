@@ -5,7 +5,9 @@ setup(
     install_requires=[
         'horseman',
         'knappe',
-        'knappe_deform'
+        'knappe_deform',
+        'tinydb',
+        'bjoern'
     ],
     extras_require={
         'test': [
