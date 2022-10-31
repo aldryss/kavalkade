@@ -7,7 +7,7 @@ setup(
         'knappe',
         'knappe_deform',
         'tinydb',
-        'bjoern'
+        'minicli'
     ],
     extras_require={
         'test': [

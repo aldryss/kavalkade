@@ -27,8 +27,7 @@ class Kavalkade(RootNode):
         self.pipeline: Pipeline[Request, Response] = Pipeline(
             self.middlewares
         )
-        self.websockets.bind(self)
-
+        
     def resolve(self, path, environ):
         endpoint = self.router.match_method(path, environ['REQUEST_METHOD'])
 

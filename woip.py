@@ -1,7 +1,7 @@
 from minicli import cli, run
 
-
 def kavalkade_web():
+    """Kavalkade web application"""
     from src.kavalkade import Kavalkade
     from tinydb import TinyDB
     return Kavalkade(
@@ -14,9 +14,9 @@ def http(debug: bool = False):
     import asyncio
     from aiowsgi import create_server
 
-    app = create_web_app()
-
+    app = kavalkade_web()
     loop = asyncio.new_event_loop()
+
     wsgi_server = create_server(app, loop=loop, port=8000)
 
     try:
