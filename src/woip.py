@@ -1,4 +1,4 @@
-from kavalkade.app import Kavalkade
+from kavalkade import Kavalkade
 
 app = Kavalkade()
 if __name__ == '__main__':

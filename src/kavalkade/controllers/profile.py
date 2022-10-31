@@ -30,7 +30,7 @@ class Profile(FormPage):
         try:
             form = self.get_form(request)
             appstruct = form.validate(request.data.form)
-            return Response.redirect('/profile')
+            
         except deform.exception.ValidationFailure as exception:
             return {
                 "error" : None,

@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Kavalade</title>
+        <link rel="stylesheet" href="../src/kavalkade/assets/style.css" />
+        <link rel="stylesheet" href="css/rpg-awesome.css" />
+        <style>
+        #avatar {
+            overflow:hidden;
+            height:200px;
+            width:100%;
+            background:url("/home/guillaume/Images/Jeux de rôles/liebert.png") no-repeat top center black;
+            background-size:cover;
+        }
+
+        #life {
+            height:100%;
+            width:100%;
+            position:relative;
+            top:50%;
+            background-blend-mode:multiply;
+            background:rgba(100,0,0,.75);
+            box-shadow:0 -1px 5px rgba(100,0,0,.50);
+        }
+
+        #character-info{
+            display:grid;
+            grid-template-columns:140px auto;
+        }
+        
+        #character-info dl > *{
+            text-align: left;
+            padding-left: 10px;
+            margin:0;
+        }
+
+        #character-info dd {
+            font-weight:bold;
+        }
+
+        #character-info aside button {
+            margin:10px 10%;
+            width:80%;
+        }
+
+        h1, h2 {
+            text-align:center;
+            margin: 0 auto;
+            padding:5px;
+            
+        }
+
+        #character-info h2 {
+            grid-column: span 3;
+        }
+
+        h2{
+            background:#222;
+            width:100%;
+            text-align:left;
+            font-size:1.3rem;
+        }
+
+        h3{
+            background:#111;
+            width:100%;
+            text-align:left;
+            font-size:1.1rem;
+            margin:0;
+            padding:5px;
+        }
+
+
+        #character-actions ul, #character-actions li {
+            margin:0;
+            padding:0;
+        }
+        #character-actions ul {
+            padding-left:10px;
+        }
+        #character-actions li {
+            display:inline-block;
+            vertical-align: top;
+            padding:5px;
+            width:40%;
+            margin:1% auto;
+            text-align: center;
+            height:30px;
+            font-size: .8rem;
+            background:black;
+        }
+        
+        #character-actions li.selected {
+            background:rgba(100,0,0,.5);
+        }
+
+        #character-actions span.label {
+            width: 70%;
+            display:inline-block;
+            font-weight: bold;
+        }
+        
+        #character-actions li select {
+            width:40px;
+            padding:0;
+        }
+
+        main section {
+            width: 100%;
+            height: 100%;
+            background-color:black;
+        }
+
+        #scene {
+            width:100%;
+            height:100%;
+            background-position:center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        #dice-box {
+            width:80%;
+            margin:10px auto;
+        }
+
+        #dice-box > * {
+            display:inline-block;
+            vertical-align: middle;
+            background: black;
+            min-width: 40px;
+            height:40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        #dice-box .dice {
+
+        }
+
+        #character-extras {
+            position:absolute;
+            left:300px;
+            top:25px;
+            color:white;
+            z-index:3;
+        }
+        #character-extras ul {
+            list-style-type:none;
+            margin:0;
+            padding:0;
+        }
+        #character-extras li {
+            border:1px solid white;
+            border-left:none;
+            background:#222;
+            margin:10px 0;
+            padding: 10px;
+        }
+
+        .header-actions{
+            font-size:1.3rem;
+            float:right;
+            padding:0 15px 0 0;
+            background:none;
+            color:red;
+            font-weight:bold;
+
+        }
+        #modal {
+        overflow:hidden;
+            position:absolute;
+            width:33%;
+            height:33%;
+            background:white;
+            top:33%;
+            left:33%;
+            background:var(--menu-bg);
+            color:var(--menu-fg);
+        }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <section id="character-info">
+                <h2>Profil</h2>
+                <div id="avatar">
+                    <div id="life"></div>
+                </div>
+                <aside>
+                <dl>
+                    <dd>Nom</dd>
+                    <dt><strong>Liebert Nullener</strong></dt>
+                    <dd>Race</dd>
+                    <dt>Humain</dt>
+                    <dd>Carrière actuelle</dd>
+                    <dt>Cocher</dt>
+                </dl>
+                <button>Fiche complète</button>
+            </aside>
+            </section>
+            <section id="character-roll">
+                <h2>Roll</h2>
+                <div id="dice-box">
+                    <span class="dice-count">1</span>
+                    <span class="dice-faces">d100</span>
+                    <select placeholder="bonus">
+                        <option>-20</option>
+                        <option>-10</option>
+                        <option selected>+0</option>
+                        <option>+10</option>
+                        <option>+20</option>
+                    </select>
+                    /
+                    <span class="success-roll">56</span>
+                    <button>Roll</button>
+                </div>
+            </section>
+            <section id="character-actions">
+                <h2>Actions<button class="header-actions">+</button></h2>
+                <h3>Combat</h3>
+                <ul>
+                    <li class="selected">
+                        <span class="label">Capacité de combat</span>
+                    </li>
+                    <li>
+                        <span class="label">Capacité de tir</span>
+                    </li>
+                    </ul>
+                    <h3>Attributs</h3>
+                    <ul>
+                    <li>
+                        <span class="label">Force</span>
+                    </li>
+                    <li>
+                        <span class="label">Endurence</span>
+                    </li>
+                    <li>
+                        <span class="label">Agilité</span>
+                    </li>
+                    <li>
+                        <span class="label">Intelligence</span>
+                    </li>
+                    <li>
+                        <span class="label">Force Mentale</span>
+                    </li>
+                    <li>
+                        <span class="label">Sociabilité</span>
+                    </li>
+                    <li>
+                        <span class="label">Magie</span>
+                    </li>
+                    </ul>
+                    <h3>Compétences</h3>
+                    <ul>
+                    <li>
+                        <span class="label">Canotage</span>
+                    </li>
+                    <li>
+                        <span class="label">Charisme</span>
+                    </li>
+                    <li>
+                        <span class="label">Commandement</span>
+                    </li>
+                </ul>
+            </section>
+            <section id="character-extras">
+                <ul>
+                <li>Points de destin : 2</li>
+                <li>Points de fortune : 1</li>
+                </ul
+            </section>
+        </nav>
+        <main>
+            <section tal:content="structure content">
+                <div id="scene" style="background-image:url('./map.png')">
+
+                </div>
+            </section>
+            <script type="text/javascript" src="../src/kavalkade/assets/app.js"></script>
+        </main>
+        <section id="modal">
+        <h2>Éditeur d'actions</h2>
+blabla j'édite
+        </section>
+    </body>
+</html>
