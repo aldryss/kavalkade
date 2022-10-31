@@ -41,3 +41,7 @@ share/
 *.rej
 *.egg-info
 
+#dev dependencies
+src/horseman/
+src/knappe/
+src/knappe-deform/
