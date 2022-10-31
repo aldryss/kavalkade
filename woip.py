@@ -3,9 +3,12 @@ from minicli import cli, run
 def kavalkade_web():
     """Kavalkade web application"""
     from src.kavalkade import Kavalkade
+    from src.kavalkade.controllers import router
+    from src.kavalkade.controllers import main
     from tinydb import TinyDB
     return Kavalkade(
-        database=TinyDB('./data/kavalkade.json')
+        database=TinyDB('./data/kavalkade.json'),
+        router=router
     )
 
 
